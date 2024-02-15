@@ -1,0 +1,89 @@
+<div class="main-data-outer">
+  <div class="inner-outer">
+    <div class="left-outer">
+      <div class="ham-wrapper">
+        <mat-icon class="ham" *ngIf="!sliderState" (click)="sliderState=!sliderState">menu</mat-icon>
+        <mat-icon class="menu-open" *ngIf="sliderState" (click)="sliderState=!sliderState">menu_open</mat-icon>
+      </div>
+      <div class="logo-wrapper">
+        <h3 class="logo">
+          Farmer's Bridge
+        </h3>
+      </div>
+    </div>
+    <div class="right-outer">
+      <!--      <div class="item">-->
+      <!--        <mat-icon class="user">group</mat-icon>-->
+      <!--      </div>-->
+      <!--      <div class="item">-->
+      <!--        <mat-icon class="money">payments</mat-icon>-->
+      <!--      </div>-->
+    </div>
+  </div>
+</div>
+
+<div class="slider-outer" *ngIf="sliderState" [@slideInOut]>
+  <div class="top-outer">
+    <h1 class="greeting">Hello There Welcome!</h1>
+  </div>
+  <div class="navigation-outer">
+    <div class="header-text-for-dep">
+      <h3 class="topic-text">Home</h3>
+      <ul class="list">
+        <li routerLink="/console/playground/home" routerLinkActive="active" >
+          <mat-icon class="icon-for-nav">dashboard</mat-icon>
+          <h4 class="nav-item">
+            Dashboard
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">General Management</h3>
+      <ul class="list">
+        <li routerLink="/console/playground/general/manage/user" routerLinkActive="active"
+            >
+          <mat-icon class="icon-for-nav">terminal</mat-icon>
+          <h4 class="nav-item">
+            User Management
+          </h4>
+        </li>
+        <li routerLink="/console/playground/general/manage/product" routerLinkActive="active"
+            >
+          <mat-icon class="icon-for-nav">terminal</mat-icon>
+          <h4 class="nav-item">
+            Product Management
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Listings Management</h3>
+      <ul class="list">
+        <!--        <li routerLink="/console/playground/products/clothes" routerLinkActive="active" >-->
+        <!--          <mat-icon class="icon-for-nav">terminal</mat-icon>-->
+        <!--          <h4 class="nav-item">-->
+        <!--            My listings-->
+        <!--          </h4>-->
+        <!--        </li>-->
+        <li routerLink="/console/playground/products/clothes" routerLinkActive="active"
+            >
+          <mat-icon class="icon-for-nav">terminal</mat-icon>
+          <h4 class="nav-item">
+            All listings
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Other Managements</h3>
+      <ul class="list">
+        <li routerLink="/console/playground/products/clothes" routerLinkActive="active"
+            >
+          <mat-icon class="icon-for-nav">terminal</mat-icon>
+          <h4 class="nav-item">
+            Blog
+          </h4>
+        </li>
+      </ul>
+      <br>
+    </div>
+  </div>
+</div>
