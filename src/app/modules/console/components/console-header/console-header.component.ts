@@ -18,5 +18,9 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class ConsoleHeaderComponent {
-  sliderState:boolean = true;
+  sliderState: boolean = true;
+
+  logout() {
+
+  }
 }

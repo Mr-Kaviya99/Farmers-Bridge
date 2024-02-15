@@ -23,7 +23,7 @@ const routes: Routes = [
     path: '', component: ConsoleGeneralComponent, children: [
       {
         path: 'manage', component: ConsoleGeneralContextComponent, children: [
-          {path: '', redirectTo: 'Users', pathMatch: 'full'},
+          {path: '', redirectTo: 'user', pathMatch: 'full'},
           {
             path: 'user', component: ConsoleGeneralUserContextComponent, children: [
               {path: '', redirectTo: 'all', pathMatch: 'full'},

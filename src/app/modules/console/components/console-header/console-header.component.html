@@ -30,7 +30,7 @@
     <div class="header-text-for-dep">
       <h3 class="topic-text">Home</h3>
       <ul class="list">
-        <li routerLink="/console/playground/home" routerLinkActive="active" >
+        <li routerLink="/console/playground/home" routerLinkActive="active">
           <mat-icon class="icon-for-nav">dashboard</mat-icon>
           <h4 class="nav-item">
             Dashboard
@@ -41,15 +41,15 @@
       <h3 class="topic-text">General Management</h3>
       <ul class="list">
         <li routerLink="/console/playground/general/manage/user" routerLinkActive="active"
-            >
-          <mat-icon class="icon-for-nav">terminal</mat-icon>
+        >
+          <mat-icon class="icon-for-nav">manage_accounts</mat-icon>
           <h4 class="nav-item">
             User Management
           </h4>
         </li>
         <li routerLink="/console/playground/general/manage/product" routerLinkActive="active"
-            >
-          <mat-icon class="icon-for-nav">terminal</mat-icon>
+        >
+          <mat-icon class="icon-for-nav">shopping_bag</mat-icon>
           <h4 class="nav-item">
             Product Management
           </h4>
@@ -58,15 +58,8 @@
       <br>
       <h3 class="topic-text">Listings Management</h3>
       <ul class="list">
-        <!--        <li routerLink="/console/playground/products/clothes" routerLinkActive="active" >-->
-        <!--          <mat-icon class="icon-for-nav">terminal</mat-icon>-->
-        <!--          <h4 class="nav-item">-->
-        <!--            My listings-->
-        <!--          </h4>-->
-        <!--        </li>-->
-        <li routerLink="/console/playground/products/clothes" routerLinkActive="active"
-            >
-          <mat-icon class="icon-for-nav">terminal</mat-icon>
+        <li routerLink="/console/playground/listing/manage/bid" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">swap_vert</mat-icon>
           <h4 class="nav-item">
             All listings
           </h4>
@@ -75,11 +68,20 @@
       <br>
       <h3 class="topic-text">Other Managements</h3>
       <ul class="list">
-        <li routerLink="/console/playground/products/clothes" routerLinkActive="active"
-            >
-          <mat-icon class="icon-for-nav">terminal</mat-icon>
+        <li routerLink="/console/playground/products/clothes" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">web_stories</mat-icon>
           <h4 class="nav-item">
             Blog
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Account Settings</h3>
+      <ul class="list">
+        <li (click)="logout()">
+          <mat-icon class="icon-for-nav">logout</mat-icon>
+          <h4 class="nav-item">
+            Logout
           </h4>
         </li>
       </ul>

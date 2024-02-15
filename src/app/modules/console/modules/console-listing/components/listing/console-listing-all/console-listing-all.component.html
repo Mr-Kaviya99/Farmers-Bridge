@@ -1,0 +1,97 @@
+<div class="list-outer">
+  <form [formGroup]="searchForm">
+    <div class="col-12">
+      <div class="search-outer">
+        <div class="search">
+          <mat-icon>search</mat-icon>
+          <input formControlName="searchText" type="search" placeholder="search here">
+        </div>
+        <button type="button" class="filter-button" [matMenuTriggerFor]="menu">
+          <mat-icon>tune</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="setRole('All')">
+            <span>All</span>
+          </button>
+          <button mat-menu-item (click)="setRole('Farmer')">
+            <span>Farmer</span>
+          </button>
+          <button mat-menu-item (click)="setRole('WholeSeller')">
+            <span>Whole Seller</span>
+          </button>
+        </mat-menu>
+
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="table-outer">
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Configuration</td>
+        <td>Product Name</td>
+        <td>Product Type</td>
+        <td>QTY</td>
+        <td>Price</td>
+        <!--        <td>Image</td>-->
+      </tr>
+      </thead>
+      <tbody>
+      <!--      <tr *ngFor="let t of allTechnologies">-->
+      <tr>
+        <td class="table-col">
+          <div class="td-inner">
+            <div class="button-outer">
+              <button (click)="deletePopUp('pt.programTypeId')" class="delete-button button">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+              <button (click)="callDecisionMaker('pt.programTypeId')" class="update-button button">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+            <!--            {{t?.name}}-->
+            Carrot
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+            <!--            {{t?.date}}-->
+            Organic
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
+            20
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
+            30.99
+          </div>
+        </td>
+        <!--        <td class="table-col">-->
+        <!--          <div class="td-inner">-->
+        <!--            <img [src]="t?.icon" alt="icon">-->
+        <!--          </div>-->
+        <!--        </td>-->
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<mat-paginator (page)="pageEvent = getServerData($event)"
+               [length]=dataCount
+               [pageIndex]=page
+               [pageSizeOptions]=pageSizeOptions
+               [pageSize]=pageSize
+               aria-label="Select page">
+</mat-paginator>
