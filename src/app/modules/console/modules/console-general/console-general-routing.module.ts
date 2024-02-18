@@ -8,15 +8,12 @@ import {
 import {
   ConsoleGeneralAllUserComponent
 } from "./components/user/console-general-all-user/console-general-all-user.component";
+import {ProductContextComponent} from "../../../share/components/product/product-context/product-context.component";
+import {NewProductComponent} from "../../../share/components/product/new-product/new-product.component";
+import {AllProductComponent} from "../../../share/components/product/all-product/all-product.component";
 import {
-  ConsoleGeneralProductContextComponent
-} from "./components/product/console-general-product-context/console-general-product-context.component";
-import {
-  ConsoleGeneralNewProductComponent
-} from "./components/product/console-general-new-product/console-general-new-product.component";
-import {
-  ConsoleGeneralAllProductsComponent
-} from "./components/product/console-general-all-products/console-general-all-products.component";
+  ConsoleProductContextComponent
+} from "./components/product/console-product-context/console-product-context.component";
 
 const routes: Routes = [
   {
@@ -32,10 +29,10 @@ const routes: Routes = [
             ]
           },
           {
-            path: 'product', component: ConsoleGeneralProductContextComponent, children: [
+            path: 'product', component: ConsoleProductContextComponent, children: [
               {path: '', redirectTo: 'new', pathMatch: 'full'},
-              {path: 'new', component: ConsoleGeneralNewProductComponent},
-              {path: 'all', component: ConsoleGeneralAllProductsComponent},
+              {path: 'new', component: NewProductComponent},
+              {path: 'all', component: AllProductComponent},
             ]
           },
         ]
