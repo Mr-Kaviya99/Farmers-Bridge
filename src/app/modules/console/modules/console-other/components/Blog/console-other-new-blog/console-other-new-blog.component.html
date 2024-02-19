@@ -1,0 +1,30 @@
+<div class="outer">
+  <form #f="ngForm" [formGroup]="form">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 column">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Blog Name</mat-label>
+          <input formControlName="blogName" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-12 quill-outer">
+        <mat-label>Content</mat-label>
+        <quill-editor (onContentChanged)="onContentChanged($event)"
+                      (onSelectionChanged)="onSelectionChanged($event)"
+                      [modules]="quillConfiguration"
+                      [styles]="{height: '300px'}"
+                      placeholder="Enter Text"></quill-editor>
+      </div>
+
+      <div class="col-12 column">
+        <div class="submit-button-outer">
+          <button (click)="createProduct(f)"
+                  class="submit-button" mat-raised-button>
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--[disabled]="form.invalid"-->

@@ -1,0 +1,149 @@
+.shop-product-view-outer {
+  min-height: 100px;
+}
+
+.shop-product-view-inner {
+  //border: 1px solid green;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-image {
+  //border: 1px solid red;
+  max-width: 30%;
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+}
+
+.bid-image-outer {
+  width: 100%;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.right-content {
+  //border: 1px solid brown;
+  max-width: 68%;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px 0;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+.description {
+  font-size: 1.1rem;
+}
+
+.other-data {
+  margin-top: 20px;
+  font-weight: 500;
+
+  span {
+    font-weight: 400;
+    font-size: 1rem;
+    //color: #B0A695;
+  }
+
+}
+
+.input-outer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    font-size: 1rem;
+
+    mat-icon {
+      padding-top: 10px;
+      color: #B0A695;
+      height: 30px;
+    }
+  }
+
+  input {
+    max-width: 120px;
+    height: 40px;
+  }
+}
+
+.button-outer {
+  //border: 1px solid red;
+  display: flex;
+  justify-content: right;
+  gap: 0 10px;
+  .place-bid {
+    background-color: #EBE3D5;
+    color: #776B5D;
+  }
+}
+
+.current-bidders-outer {
+  margin-top: 50px;
+  table {
+    thead {
+      tr {
+        border-bottom: 1px solid #776B5D;
+        th {
+          padding: 10px 0;
+          font-size: 1.1rem;
+          width: fit-content;
+        }
+
+        th:nth-child(1) {
+          padding-right: 75px;
+        }
+      }
+    }
+
+    tbody {
+      tr{
+
+        td{
+          padding: 8px 0;
+          font-size: 1rem;
+        }
+      }
+      tr:nth-child(odd) {
+        background-color: #F3EEEA;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .shop-product-view-inner {
+    flex-direction: column;
+  }
+  .left-image {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .bid-image-outer {
+    max-width: 400px;
+  }
+
+  .right-content {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+
+  .button-outer {
+    justify-content: left;
+  }
+
+}

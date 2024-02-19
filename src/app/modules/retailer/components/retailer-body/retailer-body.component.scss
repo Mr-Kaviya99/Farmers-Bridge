@@ -1,0 +1,30 @@
+.retailer-body-outer {
+  padding: 5px 15px 0 315px;
+}
+
+.retailer-body-inner{
+  padding: 0 12px 25px 12px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.retailer-body-inner::-webkit-scrollbar {
+  width: 8px;
+}
+
+.retailer-body-inner::-webkit-scrollbar-track {
+  background-color:  #F3EEEA;
+  border-radius: 5px;
+}
+
+.retailer-body-inner::-webkit-scrollbar-thumb {
+  background-color: #B0A695;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 1024px) {
+  .retailer-body-outer {
+    padding: 5px 15px 0 15px;
+  }
+}

@@ -1,0 +1,119 @@
+.open-order-detail-outer {
+  min-height: 100px;
+}
+
+.open-order-detail-inner {
+  //border: 1px solid green;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-image {
+  //border: 1px solid red;
+  max-width: 30%;
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+}
+
+.bid-image-outer {
+  width: 100%;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.right-content {
+  //border: 1px solid brown;
+  max-width: 68%;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px 0;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+.description {
+  font-size: 1.1rem;
+}
+
+.qty {
+  margin-top: 20px;
+  font-weight: 500;
+
+  span {
+    font-weight: 400;
+    font-size: 1rem;
+    //color: #B0A695;
+  }
+
+}
+.current-bid {
+  margin-top: 20px;
+  font-weight: 500;
+
+  span {
+    font-weight: 400;
+    font-size: 1rem;
+    //color: #B0A695;
+  }
+
+}
+
+.input-outer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    font-size: 1rem;
+    font-weight: 500;
+    //mat-icon {
+    //  padding-top: 10px;
+    //  color: #B0A695;
+    //  height: 30px;
+    //}
+  }
+
+  input {
+    max-width: 120px;
+    height: 40px;
+    text-align: right;
+  }
+}
+
+.button-outer {
+  .place-bid {
+    background-color: #EBE3D5;
+    color: #776B5D;
+  }
+}
+
+.current-bidders-outer {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .open-order-detail-inner {
+    flex-direction: column;
+  }
+  .left-image {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .bid-image-outer {
+    max-width: 400px;
+  }
+
+  .right-content {
+    max-width: 100%;
+  }
+}

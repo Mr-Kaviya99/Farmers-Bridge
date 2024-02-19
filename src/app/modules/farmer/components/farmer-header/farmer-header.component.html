@@ -1,0 +1,102 @@
+<div class="main-data-outer">
+  <div class="inner-outer">
+    <div class="left-outer">
+      <div class="ham-wrapper">
+        <mat-icon class="ham" *ngIf="!sliderState" (click)="sliderState=!sliderState">menu</mat-icon>
+        <mat-icon class="menu-open" *ngIf="sliderState" (click)="sliderState=!sliderState">menu_open</mat-icon>
+      </div>
+      <div class="logo-wrapper">
+        <h3 class="logo">
+          Farmer's Bridge
+        </h3>
+      </div>
+    </div>
+    <!--<div class="right-outer">
+      &lt;!&ndash;      <div class="item">&ndash;&gt;
+      &lt;!&ndash;        <mat-icon class="user">group</mat-icon>&ndash;&gt;
+      &lt;!&ndash;      </div>&ndash;&gt;
+      &lt;!&ndash;      <div class="item">&ndash;&gt;
+      &lt;!&ndash;        <mat-icon class="money">payments</mat-icon>&ndash;&gt;
+      &lt;!&ndash;      </div>&ndash;&gt;
+    </div>-->
+  </div>
+</div>
+
+<div class="slider-outer" *ngIf="sliderState" [@slideInOut]>
+  <div class="top-outer">
+    <h1 class="greeting">Hello There Welcome!</h1>
+  </div>
+  <div class="navigation-outer">
+    <div class="header-text-for-dep">
+      <h3 class="topic-text">Home</h3>
+      <ul class="list">
+        <li routerLink="/farmer/playground/home" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">dashboard</mat-icon>
+          <h4 class="nav-item">
+            Dashboard
+          </h4>
+        </li>
+        <li routerLink="/farmer/playground/blog" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">web_stories</mat-icon>
+          <h4 class="nav-item">
+            Blog
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Sales Management</h3>
+      <ul class="list">
+<!--        <li routerLink="/farmer/playground/general/manage/user" routerLinkActive="active"-->
+<!--        >-->
+<!--          <mat-icon class="icon-for-nav">manage_accounts</mat-icon>-->
+<!--          <h4 class="nav-item">-->
+<!--            User Management-->
+<!--          </h4>-->
+<!--        </li>-->
+        <li routerLink="/farmer/playground/sales/manage/product" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">shopping_bag</mat-icon>
+          <h4 class="nav-item">
+            Product Management
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Listings Management</h3>
+      <ul class="list">
+        <li routerLink="/farmer/playground/listing/manage/my-listing" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">swap_vert</mat-icon>
+          <h4 class="nav-item">
+            My listings
+          </h4>
+        </li>
+        <li routerLink="/farmer/playground/listing/manage/open-listings" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">receipt_long</mat-icon>
+          <h4 class="nav-item">
+            Open Orders
+          </h4>
+        </li>
+      </ul>
+     <!-- <br>
+      <h3 class="topic-text">Other Managements</h3>
+      <ul class="list">
+        <li routerLink="/farmer/playground/other/manage/blog" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">web_stories</mat-icon>
+          <h4 class="nav-item">
+            Blog
+          </h4>
+        </li>
+      </ul>-->
+      <br>
+      <h3 class="topic-text">Account Settings</h3>
+      <ul class="list">
+        <li (click)="logout()">
+          <mat-icon class="icon-for-nav">logout</mat-icon>
+          <h4 class="nav-item">
+            Logout
+          </h4>
+        </li>
+      </ul>
+      <br>
+    </div>
+  </div>
+</div>
