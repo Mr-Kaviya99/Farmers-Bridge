@@ -8,7 +8,8 @@ import {
 import {ConsoleListingAllComponent} from "./components/listing/console-listing-all/console-listing-all.component";
 
 const routes: Routes = [
-  {path: '', component: ConsoleListingComponent, children: [
+  {
+    path: '', component: ConsoleListingComponent, children: [
       {
         path: 'manage', component: ConsoleListingContextComponent, children: [
           {path: '', redirectTo: 'bid', pathMatch: 'full'},

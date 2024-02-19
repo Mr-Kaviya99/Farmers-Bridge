@@ -1,0 +1,57 @@
+<div class="main-data-outer">
+  <div class="inner-outer">
+    <div class="left-outer">
+      <div class="ham-wrapper">
+        <mat-icon class="ham" *ngIf="!sliderState" (click)="sliderState=!sliderState">menu</mat-icon>
+        <mat-icon class="menu-open" *ngIf="sliderState" (click)="sliderState=!sliderState">menu_open</mat-icon>
+      </div>
+      <div class="logo-wrapper">
+        <h3 class="logo">
+          Farmer's Bridge
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slider-outer" *ngIf="sliderState" [@slideInOut]>
+  <div class="top-outer">
+    <h1 class="greeting">Hello There Welcome!</h1>
+  </div>
+  <div class="navigation-outer">
+    <div class="header-text-for-dep">
+      <h3 class="topic-text">Home</h3>
+      <ul class="list">
+        <li routerLink="/wholesale-buyer/playground/home" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">dashboard</mat-icon>
+          <h4 class="nav-item">
+            Dashboard
+          </h4>
+        </li>
+        <li routerLink="/wholesale-buyer/playground/blog" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">web_stories</mat-icon>
+          <h4 class="nav-item">
+            Blog
+          </h4>
+        </li>
+        <li routerLink="/wholesale-buyer/playground/shop" routerLinkActive="active">
+          <mat-icon class="icon-for-nav">store</mat-icon>
+          <h4 class="nav-item">
+            Shop
+          </h4>
+        </li>
+      </ul>
+      <br>
+      <h3 class="topic-text">Account Settings</h3>
+      <ul class="list">
+        <li (click)="logout()">
+          <mat-icon class="icon-for-nav">logout</mat-icon>
+          <h4 class="nav-item">
+            Logout
+          </h4>
+        </li>
+      </ul>
+      <br>
+    </div>
+  </div>
+</div>

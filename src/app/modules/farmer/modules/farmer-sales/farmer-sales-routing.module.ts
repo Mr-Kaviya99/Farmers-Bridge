@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FarmerSalesComponent } from './farmer-sales.component';
-import {ProductContextComponent} from "../../../share/components/product/product-context/product-context.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {FarmerSalesComponent} from './farmer-sales.component';
 import {NewProductComponent} from "../../../share/components/product/new-product/new-product.component";
 import {AllProductComponent} from "../../../share/components/product/all-product/all-product.component";
 import {FarmerSalesContextComponent} from "./components/farmer-sales-context/farmer-sales-context.component";
@@ -9,7 +8,8 @@ import {
   FarmerProductContextComponent
 } from "./components/product/farmer-product-context/farmer-product-context.component";
 
-const routes: Routes = [{ path: '', component: FarmerSalesComponent , children: [
+const routes: Routes = [{
+  path: '', component: FarmerSalesComponent, children: [
     {
       path: 'manage', component: FarmerSalesContextComponent, children: [
         {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -31,4 +31,5 @@ const routes: Routes = [{ path: '', component: FarmerSalesComponent , children: 
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FarmerSalesRoutingModule { }
+export class FarmerSalesRoutingModule {
+}

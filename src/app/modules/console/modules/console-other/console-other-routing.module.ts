@@ -1,15 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ConsoleOtherComponent} from './console-other.component';
-import {
-  ConsoleListingContextComponent
-} from "../console-listing/components/console-listing-context/console-listing-context.component";
-import {
-  ConsoleListingBidListingContextComponent
-} from "../console-listing/components/listing/console-listing-bid-listing-context/console-listing-bid-listing-context.component";
-import {
-  ConsoleListingAllComponent
-} from "../console-listing/components/listing/console-listing-all/console-listing-all.component";
 import {ConsoleOtherContextComponent} from "./components/console-other-context/console-other-context.component";
 import {
   ConsoleOtherBlogContextComponent

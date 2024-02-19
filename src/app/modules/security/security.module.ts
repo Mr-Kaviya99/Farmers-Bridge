@@ -10,6 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import { VerificationPoolComponent } from './components/verification-pool/verification-pool.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -19,13 +20,14 @@ import { VerificationPoolComponent } from './components/verification-pool/verifi
     SignupComponent,
     VerificationPoolComponent
   ],
-  imports: [
-    CommonModule,
-    SecurityRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule
-  ]
+    imports: [
+        CommonModule,
+        SecurityRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        ReactiveFormsModule
+    ]
 })
 export class SecurityModule { }

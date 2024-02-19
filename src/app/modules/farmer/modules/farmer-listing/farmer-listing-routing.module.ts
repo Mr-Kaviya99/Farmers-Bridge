@@ -1,9 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FarmerListingComponent} from './farmer-listing.component';
-import {
-  FarmerSalesContextComponent
-} from "../farmer-sales/components/farmer-sales-context/farmer-sales-context.component";
 import {MyListingsContextComponent} from "./components/my-listings/my-listings-context/my-listings-context.component";
 import {NewListingComponent} from "../../../share/components/listing/new-listing/new-listing.component";
 import {MyAllListingComponent} from "../../../share/components/listing/my-all-listing/my-all-listing.component";

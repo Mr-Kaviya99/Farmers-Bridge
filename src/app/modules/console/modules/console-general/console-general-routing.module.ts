@@ -8,42 +8,33 @@ import {
 import {
   ConsoleGeneralAllUserComponent
 } from "./components/user/console-general-all-user/console-general-all-user.component";
-import {ProductContextComponent} from "../../../share/components/product/product-context/product-context.component";
 import {NewProductComponent} from "../../../share/components/product/new-product/new-product.component";
 import {AllProductComponent} from "../../../share/components/product/all-product/all-product.component";
 import {
   ConsoleProductContextComponent
 } from "./components/product/console-product-context/console-product-context.component";
 
-const routes: Routes = [
-  {
-    path: '', component: ConsoleGeneralComponent, children: [
-      {
-        path: 'manage', component: ConsoleGeneralContextComponent, children: [
-          {path: '', redirectTo: 'user', pathMatch: 'full'},
-          {
-            path: 'user', component: ConsoleGeneralUserContextComponent, children: [
-              {path: '', redirectTo: 'all', pathMatch: 'full'},
-              // {path: 'new', component: NewShirtComponent},
-              {path: 'all', component: ConsoleGeneralAllUserComponent},
-            ]
-          },
-          {
-            path: 'product', component: ConsoleProductContextComponent, children: [
-              {path: '', redirectTo: 'new', pathMatch: 'full'},
-              {path: 'new', component: NewProductComponent},
-              {path: 'all', component: AllProductComponent},
-            ]
-          },
-        ]
-      }
-    ]
-  }
-];
+const routes: Routes = [{
+  path: '', component: ConsoleGeneralComponent, children: [{
+    path: 'manage',
+    component: ConsoleGeneralContextComponent,
+    children: [{path: '', redirectTo: 'user', pathMatch: 'full'}, {
+      path: 'user',
+      component: ConsoleGeneralUserContextComponent,
+      children: [{path: '', redirectTo: 'all', pathMatch: 'full'}, // {path: 'new', component: NewShirtComponent},
+        {path: 'all', component: ConsoleGeneralAllUserComponent},]
+    }, {
+      path: 'product',
+      component: ConsoleProductContextComponent,
+      children: [{path: '', redirectTo: 'new', pathMatch: 'full'}, {
+        path: 'new', component: NewProductComponent
+      }, {path: 'all', component: AllProductComponent},]
+    },]
+  }]
+}];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)], exports: [RouterModule]
 })
 export class ConsoleGeneralRoutingModule {
 }

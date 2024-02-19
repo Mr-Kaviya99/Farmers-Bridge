@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ShareRoutingModule } from './share-routing.module';
 import { ShareComponent } from './share.component';
-import { BlogComponent } from './components/blog/blog.component';
 import { NewProductComponent } from './components/product/new-product/new-product.component';
 import { AllProductComponent } from './components/product/all-product/all-product.component';
 import { ProductContextComponent } from './components/product/product-context/product-context.component';
@@ -22,12 +21,17 @@ import { MyWinListingComponent } from './components/listing/my-win-listing/my-wi
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { OpenOrderListComponent } from './components/open-orders/open-order-list/open-order-list.component';
 import { OpenOrderDetailComponent } from './components/open-orders/open-order-detail/open-order-detail.component';
+import { BlogContextComponent } from './components/blog/blog-context/blog-context.component';
+import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
+import { BlogViewComponent } from './components/blog/blog-view/blog-view.component';
+import { ShopContextComponent } from './components/shop/shop-context/shop-context.component';
+import { ShopProductListComponent } from './components/shop/shop-product-list/shop-product-list.component';
+import { ShopProductViewComponent } from './components/shop/shop-product-view/shop-product-view.component';
 
 
 @NgModule({
   declarations: [
     ShareComponent,
-    BlogComponent,
     NewProductComponent,
     AllProductComponent,
     ProductContextComponent,
@@ -35,7 +39,13 @@ import { OpenOrderDetailComponent } from './components/open-orders/open-order-de
     MyAllListingComponent,
     MyWinListingComponent,
     OpenOrderListComponent,
-    OpenOrderDetailComponent
+    OpenOrderDetailComponent,
+    BlogContextComponent,
+    BlogListComponent,
+    BlogViewComponent,
+    ShopContextComponent,
+    ShopProductListComponent,
+    ShopProductViewComponent
   ],
   imports: [
     CommonModule,
