@@ -1,12 +1,12 @@
 <div class="login-page-outer">
   <div class="form-outer">
     <h1 class="header">Login </h1>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="row">
         <div class="col-12">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email">
+            <input matInput type="email" formControlName="email">
           </mat-form-field>
         </div>
         <div class="col-12">
@@ -19,7 +19,8 @@
 <!--          <a class="forgot-pass">Forgot Password?</a>-->
         </div>
         <div class="col-12">
-          <button class="login-button" mat-raised-button routerLink="/security/verification">Login</button>
+          <!--routerLink="/security/verification"-->
+          <button class="login-button" mat-raised-button  [disabled]="loginForm.invalid" type="submit">Login</button>
         </div>
         <div class="col-12">
           <p class="signup-link">

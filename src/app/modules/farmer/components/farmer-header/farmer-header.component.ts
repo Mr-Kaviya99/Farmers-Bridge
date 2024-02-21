@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {CookieManagerService} from "../../../share/services/cookie/cookie-manager.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-farmer-header',
@@ -20,7 +22,14 @@ import {animate, style, transition, trigger} from "@angular/animations";
 export class FarmerHeaderComponent {
   sliderState: boolean = true;
 
-  logout() {
+  constructor(
+    private cookieManagerService: CookieManagerService,
+    private router: Router,
+  ) {
+  }
 
+  logout() {
+    this.cookieManagerService.logout();
+    this.router.navigateByUrl('/security/login').then();
   }
 }

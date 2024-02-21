@@ -7,7 +7,7 @@ import {VerificationPoolComponent} from "./components/verification-pool/verifica
 
 const routes: Routes = [{
   path: '', component: SecurityComponent, children: [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', redirectTo: 'verification', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'verification', component: VerificationPoolComponent},

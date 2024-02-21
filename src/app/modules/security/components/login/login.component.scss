@@ -2,14 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
 }
 
 .form-outer {
   width: 100%;
   max-width: 500px;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .header {
