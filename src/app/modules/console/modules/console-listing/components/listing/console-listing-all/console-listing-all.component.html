@@ -1,27 +1,15 @@
 <div class="list-outer">
   <form [formGroup]="searchForm">
-    <div class="col-12">
-      <div class="search-outer">
-        <div class="search">
-          <mat-icon>search</mat-icon>
-          <input formControlName="searchText" type="search" placeholder="search here">
-        </div>
-        <button type="button" class="filter-button" [matMenuTriggerFor]="menu">
-          <mat-icon>tune</mat-icon>
-        </button>
-
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="setRole('All')">
-            <span>All</span>
-          </button>
-          <button mat-menu-item (click)="setRole('Farmer')">
-            <span>Farmer</span>
-          </button>
-          <button mat-menu-item (click)="setRole('WholeSeller')">
-            <span>Whole Seller</span>
-          </button>
-        </mat-menu>
-
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 column">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>User Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="ALL">All</mat-option>
+            <mat-option value="FARMER">Farmer</mat-option>
+            <mat-option value="WHOLESALER">Wholesale Buyer</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
   </form>

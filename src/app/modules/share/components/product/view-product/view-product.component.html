@@ -1,0 +1,42 @@
+<div class="view-data-outer">
+  <div class="row row-outer">
+    <div class="col-12 column">
+      <div class="breadcrumb">
+        <mat-icon (click)="navBack()">
+          arrow_back
+        </mat-icon>
+        <p><span (click)="navBack()">Product List </span>/ {{productDetails?.programName}}</p>
+      </div>
+    </div>
+    <div class="col-12">
+      <h4>Product Name</h4>
+      <p>{{productDetails?.programName}}</p>
+    </div>
+    <div class="col-12">
+      <h4>Product Type</h4>
+      <p>{{productDetails?.description}}</p>
+    </div>
+    <div class="col-12">
+      <h4>Quantity</h4>
+      <p>{{productDetails?.aboutTheTrainer}}</p>
+    </div>
+    <div class="col-12">
+      <h4>Unit Price</h4>
+      <p>{{productDetails?.hours}}</p>
+    </div>
+    <div class="col-12">
+      <h4>Description</h4>
+      <p>{{productDetails?.vision}}</p>
+    </div>
+
+    <div class="col-12 column">
+    </div>
+    <div class="col-12 col-lg-auto column thumbnail">
+      <mat-label>Product Image</mat-label>
+      <div class="thumbnail-outer">
+        <img src="{{productDetails?.fileResource.resourceUrl}}" alt="">
+      </div>
+    </div>
+
+  </div>
+</div>

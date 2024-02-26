@@ -1,5 +1,5 @@
 .title {
-  color: #B0A695;
+  color: #ABCB89;
   font-weight: 500;
   font-size: 22px;
 }
@@ -16,16 +16,16 @@
   button {
     min-width: 150px!important;
     border-radius: 100px;
-    border: 1px solid #776B5D;
-    color: #776B5D;
+    border: 1px solid #83B271;
+    color: #83B271;
     margin-right: 10px;
     height: 40px;
   }
 }
 
 .active-route {
-  background:#776B5D!important;
-  color: #EBE3D5!important;
+  background:#83B271!important;
+  color: #C7E9B0!important;
 }
 
 body::-webkit-scrollbar {
@@ -33,11 +33,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background-color:  #F3EEEA;
+  background-color:  #DDFFBB99;
   border-radius: 5px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #B0A695;
+  background-color: #ABCB89;
   border-radius: 5px;
 }

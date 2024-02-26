@@ -7,7 +7,7 @@
 //}
 
 .search {
-  border: 1px solid #B0A695;
+  border: 1px solid #ABCB89;
   padding: 3px 5px;
   width: 250px;
   height: 35px;
@@ -22,7 +22,7 @@
   }
 
   input::placeholder {
-    color: #B0A695;
+    color: #ABCB89;
   }
 
   input:focus {
@@ -31,7 +31,7 @@
 
   mat-icon {
     font-size: 18px;
-    color: #B0A695;
+    color: #ABCB89;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,7 @@
 
 .filter-button {
   border: none;
-  background-color:#776B5D;
+  background-color:#83B271;
   width: 35px;
   height: 35px;
   border-radius: 3px;

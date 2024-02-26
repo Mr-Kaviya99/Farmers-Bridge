@@ -1,0 +1,65 @@
+.bottom-sheet-header {
+  margin-top: 20px;
+
+  p {
+    font-weight: 700;
+    font-size: 15px;
+    margin: 0;
+  }
+}
+
+.bottom-sheet-title {
+  p {
+    font-size: 15px;
+    color: #627D98;
+  }
+}
+
+.option-list {
+  margin: 0;
+  padding: 0 20px;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  margin: 20px 0;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+.option:nth-last-child(1) {
+  display: flex;
+  margin: 15px 0 0 0;
+}
+
+.icon-outer {
+  width: 25px;
+  height: 25px;
+
+  mat-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    color: #7F8C8D;;
+  }
+}
+
+.option-content {
+  margin-left: 15px;
+}
+
+.option-header {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 0;
+}
+
+.option-title {
+  font-size: 11px;
+  color: #7F8C8D;
+  margin-bottom: 0;
+  margin-top: -5px;
+}

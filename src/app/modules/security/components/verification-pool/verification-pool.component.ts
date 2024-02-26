@@ -31,23 +31,23 @@ export class VerificationPoolComponent implements OnInit {
     if (this.cookieManager.tokenIsExists('token')) {
       console.log(JSON.parse(this.cookieManager.getPersonalData()));
       this.userData = JSON.parse(this.cookieManager.getPersonalData());
-      switch (this.userData.role) {
-        case "admin":
+      switch (this.userData.role[0]) {
+        case "ADMIN":
           this.snackBarService.openSuccessSnackBar('Welcome Admin ' + this.userData.firstName + ' ' + this.userData.lastName, 'close')
           this.router.navigateByUrl('/console/playground').then();
           break;
 
-        case "farmer":
+        case "FARMER":
           this.snackBarService.openSuccessSnackBar('Welcome Farmer ' + this.userData.firstName + ' ' + this.userData.lastName, 'close')
           this.router.navigateByUrl('/farmer/playground').then();
           break;
 
-        case "wholesaleBuyer":
+        case "WHOLESALER":
           this.snackBarService.openSuccessSnackBar('Welcome Whole Seller ' + this.userData.firstName + ' ' + this.userData.lastName, 'close')
           this.router.navigateByUrl('/wholesale-buyer/playground').then();
           break;
 
-        case "retailer":
+        case "RETAILER":
           this.snackBarService.openSuccessSnackBar('Welcome Retailer ' + this.userData.firstName + ' ' + this.userData.lastName, 'close')
           this.router.navigateByUrl('/retailer/playground').then();
           break;

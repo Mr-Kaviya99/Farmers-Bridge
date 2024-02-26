@@ -1,0 +1,78 @@
+.change-status-outer{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change-status-header {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.change-status-message{
+  font-weight: 400;
+  font-size: 15px;
+  width: 350px;
+}
+
+.effect-message-outer{
+  padding: 15px;
+  width: 405px;
+  height: 88px;
+  background: #FFE9D9;
+  border-left: 4px solid #F07447;
+  border-radius: 5px;
+  display: flex;
+}
+.warning-icon{
+  mat-icon{
+    color: #F35727;
+  }
+}
+.right{
+  margin-left: 12px;
+  margin-top: 3px;
+}
+
+.effect-message{
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  color: #851104;
+}
+
+.effect-note{
+  font-weight: 400;
+  font-size: 12px;
+  color: #CD4224;
+}
+.button-outer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  button{
+    margin: 0 5px;
+  }
+}
+.cancel{
+  width: 120px;
+  height: 38px;
+  background: #627D98;
+  border-radius: 50px;
+  color: #FFFFFF;
+}
+.change-status{
+  background: #E67E22;;
+  border-radius: 50px;
+  width: 120px;
+  height: 38px;
+  color: #FFFFFF;
+  margin-right: 0;
+  mat-icon{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+}

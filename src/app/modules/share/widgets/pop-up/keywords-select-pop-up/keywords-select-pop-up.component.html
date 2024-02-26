@@ -1,0 +1,19 @@
+<h2 mat-dialog-title style="margin: 0;">Manage Your Favorite Music</h2>
+<hr>
+<!--<div style="height: 20px; margin-top: -15px;">-->
+<!--&lt;!&ndash;  <mat-progress-bar mode="indeterminate" *ngIf="loadingService.updateBar | async"></mat-progress-bar>&ndash;&gt;-->
+<!--</div>-->
+<mat-dialog-content class="mat-typography">
+  <div class="data-outer">
+    <div class="element-outer">
+      <div *ngFor="let temp of this.tempData" class="element {{temp.status?'selected-hover':'de-selected-hover'}}" (click)="selectData(temp)">
+        {{temp.music}}
+      </div>
+    </div>
+  </div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="selectedDataArray">Close</button>
+</mat-dialog-actions>

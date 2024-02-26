@@ -1,0 +1,68 @@
+<div class="update-data-outer">
+  <div class="row row-outer">
+    <div class="col-12 column">
+      <div class="breadcrumb">
+        <mat-icon matDialogClose>arrow_back</mat-icon>
+        <p>Programs List / Update Basic Details</p>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form #f="ngForm" [formGroup]="form">
+      <div class="row row-outer">
+        <div class="col-12 col-lg-8 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Program Name</mat-label>
+            <input formControlName="programName" matInput placeholder="Ex : Seekers Cloud (PVT) Ltd">
+          </mat-form-field>
+        </div>
+        <div class="col-12 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Description (750)</mat-label>
+            <textarea formControlName="description" matInput rows="5"
+                      placeholder="Ex : Seekers Cloud (PVT) Ltd"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-12 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>About the trainer</mat-label>
+            <textarea formControlName="aboutTheTrainer" matInput rows="5"
+                      placeholder="Ex : Seekers Cloud (PVT) Ltd"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Hours</mat-label>
+            <input formControlName="hours" matInput type="number">
+          </mat-form-field>
+        </div>
+        <div class="col-12 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Vision</mat-label>
+            <textarea formControlName="vision" matInput rows="5" placeholder="Ex : Seekers Cloud (PVT) Ltd"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-12 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Goal</mat-label>
+            <textarea formControlName="goal" matInput rows="5" placeholder="Ex : Seekers Cloud (PVT) Ltd"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-lg-8 column">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Duration</mat-label>
+            <input formControlName="duration" matInput type="text">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <div class="row row-outer">
+    <div class="col-12 column">
+      <div class="submit-button-outer">
+        <button [disabled]="form.invalid" (click)="updateProduct(f)" mat-flat-button class="submit-button">Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

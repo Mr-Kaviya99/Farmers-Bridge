@@ -6,15 +6,15 @@ export const environment = {
   production: true,
 
   firebaseConfig : {
-    apiKey: "AIzaSyCtC3DJxW_Bnc9xMdLtZphx-aV1RyEJTXo",
-    authDomain: "developers-stack-38740.firebaseapp.com",
-    projectId: "developers-stack-38740",
-    storageBucket: "developers-stack-38740.appspot.com",
-    messagingSenderId: "991726529336",
-    appId: "1:991726529336:web:30ba659e3a7a1d0b68afcd",
-    measurementId: "G-Z5J5LRKGZJ"
+    apiKey: "AIzaSyDFKbWnKhcstFgy5qpb0KQDhZjg2ls61C4",
+    authDomain: "farmers-bridge.firebaseapp.com",
+    projectId: "farmers-bridge",
+    storageBucket: "farmers-bridge.appspot.com",
+    messagingSenderId: "258274142562",
+    appId: "1:258274142562:web:f98375543d1c11e67e243b",
+    measurementId: "G-TKG91EC9QT"
   },
-  baseUrl:'https://localhost:44323/',
+  baseUrl:'http://localhost:8002/api/v1/',
 };
 
 /*

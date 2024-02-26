@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from "@angular/forms";
+import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
+import {ImageService} from "../../../services/image/image.service";
+import {ProductService} from "../../../services/product/product.service";
+import {LoadingService} from "../../../services/loading/loading.service";
 
 @Component({
   selector: 'app-new-product',
@@ -19,9 +23,41 @@ export class NewProductComponent {
     description: new FormControl(null, [Validators.required]),
   });
 
+  constructor(
+    private imageService: ImageService,
+    private productService: ProductService,
+    private loadingService: LoadingService,
+    private snackBarService: SnackBarService,
+  ) {
+  }
 
   createProduct(f: FormGroupDirective) {
+    if (!this.image) {
+      console.log(this.image)
+      this.snackBarService.openWarningSnackBar('Please select Background Image', 'Close');
+      return;
+    }
 
+    this.loadingService.mainLoader.next(true);
+    this.imageService.saveFile(this.image, 'Farmers-Bridge-Resources/product-Images').then(imageUrl => {
+
+      const data = {
+        // name: this.form.get('technologyName')?.value!,
+        image: imageUrl,
+        // date: new Date(),
+      }
+
+      this.productService.saveProduct(data).subscribe(response => {
+        console.log(response);
+        if (response.code === 201) {
+          this.snackBarService.openSuccessSnackBar('Success!', 'Close');
+          this.refreshForm(f);
+        }
+      });
+    }).catch(error => {
+      this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+      this.loadingService.mainLoader.next(false);
+    })
   }
 
   // @ts-ignore
@@ -44,5 +80,12 @@ export class NewProductComponent {
       this.imageUrl = reader.result as string;
       console.log(this.imageUrl)
     };
+  }
+
+  private refreshForm(form: FormGroupDirective) {
+    form.resetForm();
+    form.reset();
+    this.image = undefined;
+    this.imageUrl = '';
   }
 }

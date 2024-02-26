@@ -16,6 +16,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ReactiveFormsModule,
     MatIconModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBottomSheetModule,
+    MatDialogModule
   ]
 })
 export class FarmerSalesModule {

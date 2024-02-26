@@ -1,0 +1,38 @@
+.update-data-outer{
+  padding: 10px;
+}
+.row-outer {
+  margin: 0;
+  padding: 12px 0;
+}
+
+.breadcrumb {
+  mat-icon{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+  p {
+    font-weight: 450;
+    font-size: 18px;
+    color: var(--orange_color);
+    margin: 0;
+  }
+}
+
+.example-full-width {
+  width: 100% !important;
+}
+
+.submit-button-outer {
+  text-align: right;
+  margin-top: 21px;
+}
+
+.submit-button {
+  background: #16A085FF;
+  width: 173px;
+  border-radius: 45px;
+  color: #FFFFFF;
+}
+

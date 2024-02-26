@@ -11,6 +11,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -20,14 +23,17 @@ import {ReactiveFormsModule} from "@angular/forms";
     ConsoleListingAllComponent,
     ConsoleListingBidListingContextComponent
   ],
-  imports: [
-    CommonModule,
-    ConsoleListingRoutingModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        ConsoleListingRoutingModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatPaginatorModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule
+    ]
 })
 export class ConsoleListingModule { }

@@ -14,30 +14,28 @@ export class AuthService {
   }
 
   public login(email: string, password: string): Observable<any> {
-    console.log(email)
-    console.log(password)
-    return this.http.get<any>(this.baseUrl + 'login/' + email + '/' +password,
+    return this.http.get<any>(this.baseUrl + 'users/login?email=' + email + '&password=' + password,
       {observe: 'response' as 'body'})
       .pipe(map(data => {
         return data;
       }));
   }
 
-  public getUserData(
-    token: string
-  ): Observable<any> {
-    return this.http.get(this.baseUrl + 'user/details?token=' + token);
+  public register(data: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'users/create', data);
   }
 
-  public setAvatar(
-    user: string,
-    formData: any,
-  ): Observable<any> {
-    return this.http.post(this.baseUrl + 'user-avatar/user/manage?user=' + user, formData);
+  public getUserById(userId: any): Observable<any> {
+    return this.http.get(this.baseUrl + 'getById' + userId);
   }
 
-  backup():Observable<any>{
-    return this.http.get(this.baseUrl + 'backup/create-and-download');
+  public getAllUsers(page: number | undefined, pageSize: number | undefined, roleType: any): Observable<any> {
+    console.log(roleType)
+    return this.http.get<any>(this.baseUrl + 'users/get-all?role='+roleType+'&page=' + page + '&size=' + pageSize);
+  }
+
+  public restrictUser(userId: any) {
+    return this.http.put<any>(this.baseUrl + 'users/restrict?userId='+userId,{})
   }
 
 }

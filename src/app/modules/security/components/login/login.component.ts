@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {CookieManagerService} from "../../../share/services/cookie/cookie-manager.service";
@@ -6,13 +6,14 @@ import {AuthService} from "../../../share/services/auth/auth.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {first} from "rxjs";
 import {SnackBarService} from "../../../share/services/snack-bar/snack-bar.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -37,7 +38,7 @@ export class LoginComponent {
         (data: HttpResponse<any>) => {
           console.log(data);
           if (data.body.code === 200) {
-            this.cookieManager.setToken(data.body.data.userId + '&' + data.body.data.firstName + '&' + data.body.data.lastName + '&' + data.body.data.role);
+            this.cookieManager.setToken(data.body.data.userId + '&' + data.body.data.firstName + '&' + data.body.data.lastName + '&' + data.body.data.role[0]);
             this.cookieManager.setPersonalData(data.body.data);
             this.router.navigateByUrl('/security/verification').then();
           } else {
@@ -54,5 +55,11 @@ export class LoginComponent {
           }
         }
       );
+  }
+
+  ngOnInit(): void {
+    if (this.cookieManager.tokenIsExists('token')){
+      this.router.navigateByUrl('/security/verification').then();
+    }
   }
 }

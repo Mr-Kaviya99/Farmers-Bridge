@@ -1,0 +1,23 @@
+<div class="edit-section-main-outer">
+  <div class="bottom-sheet-header">
+    <p>{{details?.header}}</p>
+  </div>
+  <div class="bottom-sheet-title">
+    <p>{{details?.title}}</p>
+  </div>
+  <hr>
+  <ul class="option-list">
+    <li *ngFor="let option of details?.option">
+      <div class="option" (click)="navigate(option)">
+        <div class="icon-outer">
+          <mat-icon>{{option?.icon}}</mat-icon>
+        </div>
+        <div class="option-content">
+          <p class="option-header">{{option?.header}}</p>
+          <p class="option-title">{{option?.title}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+

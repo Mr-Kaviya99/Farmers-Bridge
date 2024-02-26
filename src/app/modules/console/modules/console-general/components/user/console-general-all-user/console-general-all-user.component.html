@@ -1,30 +1,16 @@
 <div class="list-outer">
   <form [formGroup]="searchForm">
-    <div class="col-12">
-      <div class="search-outer">
-        <div class="search">
-          <mat-icon>search</mat-icon>
-          <input formControlName="searchText" type="search" placeholder="search here">
-        </div>
-        <button type="button" class="filter-button" [matMenuTriggerFor]="menu">
-          <mat-icon>tune</mat-icon>
-        </button>
-
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="setType('All')">
-            <span>All</span>
-          </button>
-          <button mat-menu-item (click)="setType('Farmer')">
-            <span>Farmer</span>
-          </button>
-          <button mat-menu-item (click)="setType('WholeSeller')">
-            <span>Whole Seller</span>
-          </button>
-          <button mat-menu-item (click)="setType('Retailer')">
-            <span>Retailer</span>
-          </button>
-        </mat-menu>
-
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 column">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>User Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="ALL">All</mat-option>
+            <mat-option value="FARMER">Farmer</mat-option>
+            <mat-option value="WHOLESALER">Wholesale Buyer</mat-option>
+            <mat-option value="RETAILER">Retailer</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
   </form>
@@ -37,40 +23,41 @@
         <td>Full Name</td>
         <td>Email</td>
         <td>Role</td>
+        <td>Active Status</td>
         <!--        <td>Image</td>-->
       </tr>
       </thead>
       <tbody>
-      <!--      <tr *ngFor="let t of allTechnologies">-->
-      <tr>
+      <tr *ngFor="let au of allUsers">
         <td class="table-col">
           <div class="td-inner">
             <div class="button-outer">
-              <button (click)="deletePopUp('pt.programTypeId')" class="delete-button button">
-                <mat-icon>block</mat-icon>
+              <button (click)="restrictUser(au?.property_id)" class="delete-button button">
+<!--                <mat-icon>block</mat-icon>-->
+                <mat-icon *ngIf="au?.activeStatus">block</mat-icon>
+                <mat-icon *ngIf="!au?.activeStatus" style="color: #16A085FF!important">check_circle</mat-icon>
               </button>
-<!--              <button (click)="callDecisionMaker('pt.programTypeId')" class="update-button button">-->
-<!--                <mat-icon>edit</mat-icon>-->
-<!--              </button>-->
             </div>
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.name}}-->
-            Kavindu Hashintha
+            {{au?.firstName}} {{au?.lastName}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.date}}-->
-            kavinduhasintha9@gmail.com
+                        {{au?.email}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
-            Wholesale Buyer
+                        {{au?.role}}
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+                        {{au?.activeStatus ? 'Active' : 'Deactivated'}}
           </div>
         </td>
         <!--        <td class="table-col">-->

@@ -1,0 +1,21 @@
+<div class="change-status-info-outer">
+  <div class="change-status-outer">
+    <p class="change-status-header">Disable Property?</p>
+    <p class="change-status-message" [innerHTML]="updateData?.message"></p>
+  </div>
+  <div class="effect-message-outer">
+    <div class="left">
+      <div class="warning-icon">
+        <mat-icon>warning_outlined</mat-icon>
+      </div>
+    </div>
+    <div class="right">
+      <p class="effect-message">{{updateData?.effectDetails?.message}}</p>
+      <p class="effect-note" [innerHTML]="updateData.effectDetails?.notice"></p>
+    </div>
+  </div>
+  <div class="button-outer">
+    <button class="cancel" mat-flat-button (click)="onClick(false)">Cancel</button>
+    <button class="change-status" mat-flat-button (click)="onClick(true)">change</button>
+  </div>
+</div>

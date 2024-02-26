@@ -15,6 +15,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import { ConsoleProductContextComponent } from './components/product/console-product-context/console-product-context.component';
+import {MatBottomSheet, MatBottomSheetModule} from "@angular/material/bottom-sheet";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ConsoleProductContextComponent } from './components/product/console-pro
     MatSelectModule,
     MatPaginatorModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBottomSheetModule
   ]
 })
 export class ConsoleGeneralModule { }

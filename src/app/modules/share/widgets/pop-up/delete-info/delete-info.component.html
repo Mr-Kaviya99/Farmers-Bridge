@@ -1,0 +1,22 @@
+<div class="delete-info-outer">
+  <div class="delete-outer">
+    <p class="delete-header">Delete Property?</p>
+    <p class="delete-message" [innerHTML]="deleteData?.message"></p>
+  </div>
+  <div class="effect-message-outer">
+    <div class="left">
+      <div class="warning-icon">
+        <mat-icon>warning_outlined</mat-icon>
+      </div>
+    </div>
+    <div class="right">
+      <p class="effect-message">{{deleteData?.effectDetails?.message}}</p>
+      <p class="effect-note" [innerHTML]="deleteData?.effectDetails?.notice"></p>
+    </div>
+  </div>
+  <div class="button-outer">
+    <button class="cancel" mat-flat-button (click)="onClick(false)">Cancel</button>
+    <button class="delete" mat-flat-button (click)="onClick(true)">Delete&nbsp;<mat-icon>delete_sweep</mat-icon>
+    </button>
+  </div>
+</div>

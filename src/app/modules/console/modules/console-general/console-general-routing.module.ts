@@ -13,24 +13,29 @@ import {AllProductComponent} from "../../../share/components/product/all-product
 import {
   ConsoleProductContextComponent
 } from "./components/product/console-product-context/console-product-context.component";
+import {ViewProductComponent} from "../../../share/components/product/view-product/view-product.component";
 
 const routes: Routes = [{
-  path: '', component: ConsoleGeneralComponent, children: [{
-    path: 'manage',
-    component: ConsoleGeneralContextComponent,
-    children: [{path: '', redirectTo: 'user', pathMatch: 'full'}, {
-      path: 'user',
-      component: ConsoleGeneralUserContextComponent,
-      children: [{path: '', redirectTo: 'all', pathMatch: 'full'}, // {path: 'new', component: NewShirtComponent},
-        {path: 'all', component: ConsoleGeneralAllUserComponent},]
-    }, {
-      path: 'product',
-      component: ConsoleProductContextComponent,
-      children: [{path: '', redirectTo: 'new', pathMatch: 'full'}, {
-        path: 'new', component: NewProductComponent
-      }, {path: 'all', component: AllProductComponent},]
-    },]
-  }]
+  path: '', component: ConsoleGeneralComponent, children: [
+    {
+      path: 'manage', component: ConsoleGeneralContextComponent, children: [
+        {path: '', redirectTo: 'user', pathMatch: 'full'},
+        {
+          path: 'user', component: ConsoleGeneralUserContextComponent, children: [
+            {path: '', redirectTo: 'all', pathMatch: 'full'}, // {path: 'new', component: NewShirtComponent},
+            {path: 'all', component: ConsoleGeneralAllUserComponent},]
+        },
+        {
+          path: 'product', component: ConsoleProductContextComponent, children: [
+            {path: '', redirectTo: 'new', pathMatch: 'full'},
+            {path: 'new', component: NewProductComponent},
+            {path: 'all', component: AllProductComponent},
+            {path: 'view', component: ViewProductComponent},
+          ]
+        },
+      ]
+    }
+  ]
 }];
 
 @NgModule({
