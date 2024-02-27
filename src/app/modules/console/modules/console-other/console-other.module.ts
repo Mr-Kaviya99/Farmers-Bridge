@@ -19,6 +19,8 @@ import {QuillModule} from "ngx-quill";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -29,20 +31,22 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ConsoleOtherAllBlogComponent,
     ConsoleOtherBlogContextComponent
   ],
-    imports: [
-        CommonModule,
-        ConsoleOtherRoutingModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        QuillModule,
-        MatIconModule,
-        MatMenuModule,
-        MatPaginatorModule
-    ]
+  imports: [
+    CommonModule,
+    ConsoleOtherRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    QuillModule,
+    MatIconModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatBottomSheetModule,
+    MatDialogModule
+  ]
 })
 export class ConsoleOtherModule {
 }

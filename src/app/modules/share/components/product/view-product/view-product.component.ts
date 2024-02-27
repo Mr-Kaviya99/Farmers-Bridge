@@ -35,6 +35,7 @@ export class ViewProductComponent {
 
   loadProductById() {
     this.productService.productById(this.productId).subscribe(response => {
+      console.log(response)
       this.productDetails = response.data
     }, error => {
       this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');

@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from "@angular/forms";
+import {ImageService} from "../../../services/image/image.service";
+import {LoadingService} from "../../../services/loading/loading.service";
+import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
+import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
+import {ListingService} from "../../../services/listing/listing.service";
 
 @Component({
   selector: 'app-new-listing',
@@ -13,13 +18,53 @@ export class NewListingComponent {
 
   form = new FormGroup({
     title: new FormControl(null, [Validators.required]),
-    expDate: new FormControl(null, [Validators.required]),
+    expireDate: new FormControl(null, [Validators.required]),
+    quantity: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
   });
 
+  constructor(
+    private imageService: ImageService,
+    private listingService: ListingService,
+    private loadingService: LoadingService,
+    private snackBarService: SnackBarService,
+    private cookieManager: CookieManagerService,
+  ) {
+  }
 
-  createProduct(f: FormGroupDirective) {
 
+  createListing(f: FormGroupDirective) {
+    if (!this.image) {
+      console.log(this.image)
+      this.snackBarService.openWarningSnackBar('Please select Background Image', 'Close');
+      return;
+    }
+
+    this.loadingService.mainLoader.next(true);
+    this.imageService.saveFile(this.image, 'Farmers-Bridge-Resources/listing-Images').then(imageUrl => {
+      const userData = JSON.parse(this.cookieManager.getPersonalData());
+
+      console.log(userData.property_id)
+
+      const data = {
+        title: this.form.get('title')?.value!,
+        expireDate: this.form.get('expireDate')?.value!,
+        quantity: this.form.get('quantity')?.value!,
+        description: this.form.get('description')?.value!,
+        image: imageUrl,
+      }
+      console.log(data)
+      this.listingService.saveListing(data, userData.property_id).subscribe(response => {
+        console.log(response);
+        if (response.code === 201) {
+          this.snackBarService.openSuccessSnackBar('Success!', 'Close');
+          this.refreshForm(f);
+        }
+      });
+    }).catch(error => {
+      this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+      this.loadingService.mainLoader.next(false);
+    })
   }
 
   // @ts-ignore
@@ -42,5 +87,12 @@ export class NewListingComponent {
       this.imageUrl = reader.result as string;
       console.log(this.imageUrl)
     };
+  }
+
+  private refreshForm(form: FormGroupDirective) {
+    form.resetForm();
+    form.reset();
+    this.image = undefined;
+    this.imageUrl = '';
   }
 }

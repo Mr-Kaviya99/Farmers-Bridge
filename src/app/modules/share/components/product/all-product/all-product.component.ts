@@ -15,6 +15,7 @@ import {NavigateOption} from "../../../services/dto/enums/NavigateOptions";
 import {EditSectionComponent} from "../../../widgets/bottom-sheet/edit-section/edit-section.component";
 import {EditProductComponent} from "../edit-product/edit-product.component";
 import {Router} from "@angular/router";
+import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
 
 @Component({
   selector: 'app-all-product',
@@ -23,11 +24,10 @@ import {Router} from "@angular/router";
 })
 export class AllProductComponent implements OnInit {
 
-  allTechnologies: any;
+  productList: any;
   selectedPropertyId: any;
-  resourceLanguages: any;
 
-  searchText: string = '';
+  productType: string = 'ALL';
 
   page: number | undefined = 0;
   pageSize: number | undefined = 5;
@@ -43,6 +43,7 @@ export class AllProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private snackBarService: SnackBarService,
+    private cookieManager: CookieManagerService,
     private _bottomSheet: MatBottomSheet,
     private router: Router,
     public dialog: MatDialog,
@@ -57,16 +58,16 @@ export class AllProductComponent implements OnInit {
       .pipe(debounceTime(500))
       .subscribe(data => {
         // @ts-ignore
-        this.searchText = data.searchText;
+        this.productType = data.productType;
         this.loadAllProduct();
       });
   }
 
   loadAllProduct() {
-    this.productService.getAllProducts(this.page, this.pageSize, '')
+    this.productService.getAllProducts(this.page, this.pageSize, this.productType)
       .subscribe((response: any) => {
           this.dataCount = response.data.count;
-          this.allTechnologies = response.data.dataList;
+          this.productList = response.data.dataList;
         }
       )
   }
@@ -136,6 +137,19 @@ export class AllProductComponent implements OnInit {
   }
 
   navigateToViewUser(productId: any) {
-    this.router.navigate(['/console/playground/general/manage/product/view'], {queryParams: {productId: productId}})
+    let userData = JSON.parse(this.cookieManager.getPersonalData());
+    console.log(userData)
+    switch (userData.role[0]) {
+      case "ADMIN":
+        this.router.navigate(['/console/playground/general/manage/product/view'], {queryParams: {productId: productId}})
+        break;
+
+      case "FARMER":
+        this.router.navigate(['/farmer/playground/sales/manage/product/view'], {queryParams: {productId: productId}})
+        break;
+
+      default:
+        break;
+    }
   }
 }

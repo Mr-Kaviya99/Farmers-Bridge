@@ -36,3 +36,29 @@
   color: #FFFFFF;
 }
 
+
+.file-input {
+  display: none;
+}
+
+.image-outer {
+  background: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  overflow: hidden;
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    display: block;
+  }
+}

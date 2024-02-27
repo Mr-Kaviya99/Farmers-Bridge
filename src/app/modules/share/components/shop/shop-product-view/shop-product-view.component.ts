@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ProductService} from "../../../services/product/product.service";
+import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
+import {BidDetailService} from "../../../services/bid-details/bid-detail.service";
+import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-shop-product-view',
@@ -7,4 +13,42 @@ import { Component } from '@angular/core';
 })
 export class ShopProductViewComponent {
 
+  productId: string = '';
+  maxBid: any;
+  productDetails: any;
+  userData: any;
+
+  form = new FormGroup({
+    bidAmount: new FormControl(null, [Validators.required]),
+  });
+
+  constructor(
+    private productService: ProductService,
+    private snackBarService: SnackBarService,
+    private bidDetailService: BidDetailService,
+    private cookieManager: CookieManagerService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+          this.productId = params['productId'];
+        }
+      );
+    this.loadProductById();
+    this.userData = JSON.parse(this.cookieManager.getPersonalData());
+    console.log(this.userData)
+  }
+
+  loadProductById() {
+    this.productService.productById(this.productId).subscribe(response => {
+      console.log(response)
+      this.productDetails = response.data;
+    }, error => {
+      this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+    })
+  }
 }

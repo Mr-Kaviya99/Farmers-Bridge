@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {PageEvent} from "@angular/material/paginator";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ListingService} from "../../../services/listing/listing.service";
+import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {debounceTime} from "rxjs";
+import {DeleteInfo} from "../../../services/dto/delete-info/delete-info";
+import {EffectInfo} from "../../../services/dto/delete-info/effect-info";
+import {DeleteInfoComponent} from "../../../widgets/pop-up/delete-info/delete-info.component";
+import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
 
 @Component({
   selector: 'app-my-all-listing',
@@ -9,12 +18,10 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class MyAllListingComponent {
 
-  state = 'All';
-  allTechnologies: any;
+  allListings: any;
   selectedPropertyId: any;
-  resourceLanguages: any;
 
-  searchText: string = '';
+  role: string = 'ALL';
 
   page: number | undefined = 0;
   pageSize: number | undefined = 5;
@@ -24,26 +31,75 @@ export class MyAllListingComponent {
 
 
   searchForm = new FormGroup({
-    searchText: new FormControl('')
+    role: new FormControl('')
   });
-  type: string = 'All';
 
-  deletePopUp(technologiesId: any) {
+  constructor(
+    private listingService: ListingService,
+    private snackBarService: SnackBarService,
+    private cookieManager: CookieManagerService,
+    private router: Router,
+    public dialog: MatDialog,
+  ) {
+  }
 
+  ngOnInit(): void {
+
+    this.loadAllListings();
+
+    this.searchForm.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe(data => {
+        // @ts-ignore
+        this.role = data.role;
+        this.loadAllListings();
+      });
+  }
+
+  loadAllListings() {
+    const userData = JSON.parse(this.cookieManager.getPersonalData());
+    // this.listingService.getAllListingsByUserId(this.page, this.pageSize, userData?.property_id)
+    this.listingService.getAllListings(this.page, this.pageSize,this.role)
+      .subscribe((response: any) => {
+          this.dataCount = response.data.count;
+          this.allListings = response.data.dataList;
+        }
+      )
   }
 
   public getServerData(event?: PageEvent): any {
     this.pageSize = event?.pageSize;
     this.page = event?.pageIndex;
-    // this.loadAllTechnologies();
+    this.loadAllListings();
   }
 
-  callDecisionMaker(programTypeId: string) {
+  deletePopUp(propertyId: any) {
+    this.selectedPropertyId = propertyId;
+    let deleteData = new DeleteInfo(
+      propertyId,
+      `<h4>Are you sure you want to delete <b>"` + propertyId + `"?</b> You can’t undo this action.</h4>`,
+      new EffectInfo(
+        'Warning',
+        `Please ensure that you have reviewed and considered the impact of this action`,
+      ),
+      []
+    );
 
-  }
+    const dialogRef = this.dialog.open(DeleteInfoComponent, {
+      data: deleteData,
+    });
 
-  setType(type: string) {
-    this.type = status;
-    // this.loadAllUsers();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.listingService.deleteListing(this.selectedPropertyId).subscribe(response => {
+          if (response?.code == 204) {
+            this.snackBarService.openSuccessSnackBar('Deleted', 'Close');
+            this.loadAllListings();
+          } else {
+            this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+          }
+        });
+      }
+    });
   }
 }

@@ -54,6 +54,7 @@
   }
 
 }
+
 .current-bid {
   margin-top: 20px;
   font-weight: 500;
@@ -83,9 +84,15 @@
 
   input {
     max-width: 120px;
-    height: 40px;
+    height: 38px;
     text-align: right;
   }
+}
+
+.bid-form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .button-outer {

@@ -4,6 +4,7 @@ import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
 import {ImageService} from "../../../services/image/image.service";
 import {ProductService} from "../../../services/product/product.service";
 import {LoadingService} from "../../../services/loading/loading.service";
+import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
 
 @Component({
   selector: 'app-new-product',
@@ -28,6 +29,7 @@ export class NewProductComponent {
     private productService: ProductService,
     private loadingService: LoadingService,
     private snackBarService: SnackBarService,
+    private cookieManager: CookieManagerService,
   ) {
   }
 
@@ -40,14 +42,18 @@ export class NewProductComponent {
 
     this.loadingService.mainLoader.next(true);
     this.imageService.saveFile(this.image, 'Farmers-Bridge-Resources/product-Images').then(imageUrl => {
-
+      const userData = JSON.parse(this.cookieManager.getPersonalData());
+      console.log(userData.property_id)
       const data = {
-        // name: this.form.get('technologyName')?.value!,
-        image: imageUrl,
-        // date: new Date(),
+        productName: this.form.get('productName')?.value!,
+        productType: this.form.get('productType')?.value!,
+        qty: this.form.get('quantity')?.value!,
+        price: this.form.get('price')?.value!,
+        description: this.form.get('description')?.value!,
+        imageUrl: imageUrl,
       }
 
-      this.productService.saveProduct(data).subscribe(response => {
+      this.productService.saveProduct(data, userData.property_id).subscribe(response => {
         console.log(response);
         if (response.code === 201) {
           this.snackBarService.openSuccessSnackBar('Success!', 'Close');

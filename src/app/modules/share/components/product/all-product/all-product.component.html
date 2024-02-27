@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4 column">
         <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>User Role</mat-label>
+          <mat-label>Product Type</mat-label>
           <mat-select formControlName="productType">
             <mat-option value="ALL">All</mat-option>
             <mat-option value="ORGANIC">Organic</mat-option>
@@ -27,18 +27,18 @@
       </tr>
       </thead>
       <tbody>
-      <!--      <tr *ngFor="let t of allTechnologies">-->
-      <tr>
+      <tr *ngFor="let pl of productList">
+        <!--      <tr>-->
         <td class="table-col">
           <div class="td-inner">
             <div class="button-outer">
-              <button (click)="deletePopUp('pt.programTypeId')" class="delete-button button">
+              <button (click)="deletePopUp(pl?.productId)" class="delete-button button">
                 <mat-icon>delete_sweep</mat-icon>
               </button>
-              <button (click)="callDecisionMaker('pt.programTypeId')" class="update-button button">
+              <button (click)="callDecisionMaker(pl?.productId)" class="update-button button">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button class="view-in-detail-button button" (click)="navigateToViewUser('program.programId')">
+              <button class="view-in-detail-button button" (click)="navigateToViewUser(pl?.productId)">
                 <mat-icon>visibility</mat-icon>
               </button>
             </div>
@@ -46,26 +46,22 @@
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.name}}-->
-            Carrot
+            {{pl?.productName}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.date}}-->
-            Organic
+            {{pl?.productType}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
-            20
+            {{pl?.qty}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
-            30.99
+            {{pl?.price}}
           </div>
         </td>
       </tr>

@@ -11,10 +11,16 @@
       <div class="col-12 col-sm-6 col-md-4 column">
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Expire Date</mat-label>
-          <input formControlName="expDate" matInput [matDatepicker]="picker">
+          <input formControlName="expireDate" matInput [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 column">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Quantity</mat-label>
+          <input formControlName="quantity" matInput>
         </mat-form-field>
       </div>
       <div class="col-12">
@@ -25,18 +31,18 @@
       </div>
       <div class="col-12">
       </div>
-<!--      <div class="col-12 col-sm-6 col-lg-4 column image">-->
-<!--        <mat-label>Product Image</mat-label>-->
-<!--        <div (click)="fileUpload1.click()" class="image-outer">-->
-<!--          <input #fileUpload1 (change)="imageSelected($event)"-->
-<!--                 accept=".jpg, .png, .jpeg" class="file-input" type="file">-->
-<!--          <img *ngIf="imageUrl" alt="" src="{{imageUrl}}">-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="col-12 col-sm-6 col-lg-4 column image">
+        <mat-label>Listing Image</mat-label>
+        <div (click)="fileUpload1.click()" class="image-outer">
+          <input #fileUpload1 (change)="imageSelected($event)"
+                 accept=".jpg, .png, .jpeg" class="file-input" type="file">
+          <img *ngIf="imageUrl" alt="" src="{{imageUrl}}">
+        </div>
+      </div>
 
       <div class="col-12 column">
         <div class="submit-button-outer">
-          <button (click)="createProduct(f)"
+          <button (click)="createListing(f)"
                   class="submit-button" mat-raised-button>
             Submit
           </button>

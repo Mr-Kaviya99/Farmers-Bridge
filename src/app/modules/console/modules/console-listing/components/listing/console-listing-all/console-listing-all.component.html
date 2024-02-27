@@ -19,58 +19,39 @@
       <thead>
       <tr>
         <td>Configuration</td>
-        <td>Product Name</td>
-        <td>Product Type</td>
+        <td>Title</td>
         <td>QTY</td>
-        <td>Price</td>
+        <td>Description</td>
         <!--        <td>Image</td>-->
       </tr>
       </thead>
       <tbody>
-      <!--      <tr *ngFor="let t of allTechnologies">-->
-      <tr>
+      <tr *ngFor="let al of allListings">
+        <!--      <tr>-->
         <td class="table-col">
           <div class="td-inner">
             <div class="button-outer">
-              <button (click)="deletePopUp('pt.programTypeId')" class="delete-button button">
+              <button (click)="deletePopUp(al?.listingId)" class="delete-button button">
                 <mat-icon>delete_sweep</mat-icon>
-              </button>
-              <button (click)="callDecisionMaker('pt.programTypeId')" class="update-button button">
-                <mat-icon>edit</mat-icon>
               </button>
             </div>
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.name}}-->
-            Carrot
+            {{al?.title}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.date}}-->
-            Organic
+            {{al?.quantity}}
           </div>
         </td>
         <td class="table-col">
           <div class="td-inner">
-            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
-            20
+            {{al?.description}}
           </div>
         </td>
-        <td class="table-col">
-          <div class="td-inner">
-            <!--            {{t?.status ? 'Acitive' : 'Inactive'}}-->
-            30.99
-          </div>
-        </td>
-        <!--        <td class="table-col">-->
-        <!--          <div class="td-inner">-->
-        <!--            <img [src]="t?.icon" alt="icon">-->
-        <!--          </div>-->
-        <!--        </td>-->
-
       </tr>
       </tbody>
     </table>

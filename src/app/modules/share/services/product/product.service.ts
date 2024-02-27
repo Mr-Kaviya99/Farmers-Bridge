@@ -13,24 +13,24 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  saveProduct(data: any): Observable<any> {
+  saveProduct(data: any, userId: any): Observable<any> {
     console.log(data)
-    return this.http.post(this.baseUrl + 'product/create', data);
+    return this.http.post(this.baseUrl + 'products/create?userId=' + userId, data);
   }
 
   getAllProducts(page: number | undefined, pageSize: number | undefined, productType: any): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'allUser?productType=' + productType + '?page=' + page + '&size=' + pageSize);
+    return this.http.get<any>(this.baseUrl + 'products/get-all-paginated?productType=' + productType + '&page=' + page + '&size=' + pageSize);
   }
 
   editProduct(productId: any, data: {}): Observable<any> {
-    return this.http.post(this.baseUrl + 'product/update?productId', data);
+    return this.http.put(this.baseUrl + 'products/' + productId, data);
   }
 
   deleteProduct(productId: any): Observable<any> {
-    return this.http.delete(this.baseUrl + 'product/delete/' + productId);
+    return this.http.delete(this.baseUrl + 'products/' + productId);
   }
 
   productById(productId: any): Observable<any> {
-    return this.http.get(this.baseUrl + 'product/' + productId);
+    return this.http.get(this.baseUrl + 'products/get-by-id/' + productId);
   }
 }

@@ -1,6 +1,6 @@
 <div class="blog-view-outer">
-  <h2 class="blog-title">This is the Title</h2>
+  <h2 class="blog-title">{{blogDetails?.title}}</h2>
   <div class="container">
-    <div class="content" [innerHTML]="blogContent"></div>
+    <div class="content" [innerHTML]="blogDetails?.content"></div>
   </div>
 </div>

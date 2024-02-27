@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {PageEvent} from "@angular/material/paginator";
-import {FormControl, FormGroup} from "@angular/forms";
+import {SnackBarService} from "../../../../../../share/services/snack-bar/snack-bar.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteInfo} from "../../../../../../share/services/dto/delete-info/delete-info";
+import {EffectInfo} from "../../../../../../share/services/dto/delete-info/effect-info";
+import {DeleteInfoComponent} from "../../../../../../share/widgets/pop-up/delete-info/delete-info.component";
+import {BlogService} from "../../../../../../share/services/blog/blog.service";
 
 @Component({
   selector: 'app-console-other-all-blog',
@@ -9,12 +16,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ConsoleOtherAllBlogComponent {
 
-  state = 'All';
-  allTechnologies: any;
+  allBlogs: any;
   selectedPropertyId: any;
-  resourceLanguages: any;
-
-  searchText: string = '';
 
   page: number | undefined = 0;
   pageSize: number | undefined = 5;
@@ -22,28 +25,65 @@ export class ConsoleOtherAllBlogComponent {
   dataCount = 0;
   pageEvent: PageEvent | undefined;
 
-
-  searchForm = new FormGroup({
-    searchText: new FormControl('')
-  });
   type: string = 'All';
 
-  deletePopUp(technologiesId: any) {
+  constructor(
+    private blogService: BlogService,
+    private snackBarService: SnackBarService,
+    private _bottomSheet: MatBottomSheet,
+    private router: Router,
+    public dialog: MatDialog,
+  ) {
+  }
 
+  ngOnInit(): void {
+    this.loadAllBlogs();
+  }
+
+  loadAllBlogs() {
+    this.blogService.getAllBlogs(this.page, this.pageSize)
+      .subscribe((response: any) => {
+          console.log(response);
+          this.dataCount = response.data.count;
+          this.allBlogs = response.data.dataList;
+        }
+      )
   }
 
   public getServerData(event?: PageEvent): any {
     this.pageSize = event?.pageSize;
     this.page = event?.pageIndex;
-    // this.loadAllTechnologies();
+    this.loadAllBlogs();
   }
 
-  callDecisionMaker(programTypeId: string) {
+  deletePopUp(propertyId: any) {
+    this.selectedPropertyId = propertyId;
+    let deleteData = new DeleteInfo(
+      propertyId,
+      `<h4>Are you sure you want to delete <b>"` + propertyId + `"?</b> You can’t undo this action.</h4>`,
+      new EffectInfo(
+        'Warning',
+        `Please ensure that you have reviewed and considered the impact of this action`,
+      ),
+      []
+    );
 
-  }
+    const dialogRef = this.dialog.open(DeleteInfoComponent, {
+      data: deleteData,
+    });
 
-  setRole(type: string) {
-    this.type = status;
-    // this.loadAllUsers();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.blogService.deleteBlog(this.selectedPropertyId).subscribe(response => {
+          if (response?.code == 204) {
+            this.snackBarService.openSuccessSnackBar('Deleted', 'Close');
+            this.loadAllBlogs();
+          } else {
+            this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+          }
+        });
+      }
+    });
   }
 }
+

@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit{
       .subscribe(
         (data: HttpResponse<any>) => {
           console.log(data);
+          console.log(data.body.data.property_id);
           if (data.body.code === 200) {
-            this.cookieManager.setToken(data.body.data.userId + '&' + data.body.data.firstName + '&' + data.body.data.lastName + '&' + data.body.data.role[0]);
+            this.cookieManager.setToken(data.body.data.property_id + '&' + data.body.data.firstName + '&' + data.body.data.lastName + '&' + data.body.data.role[0]);
+            console.log(this.cookieManager.getToken())
             this.cookieManager.setPersonalData(data.body.data);
             this.router.navigateByUrl('/security/verification').then();
           } else {

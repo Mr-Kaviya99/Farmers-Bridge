@@ -7,6 +7,7 @@ import {FarmerSalesContextComponent} from "./components/farmer-sales-context/far
 import {
   FarmerProductContextComponent
 } from "./components/product/farmer-product-context/farmer-product-context.component";
+import {ViewProductComponent} from "../../../share/components/product/view-product/view-product.component";
 
 const routes: Routes = [{
   path: '', component: FarmerSalesComponent, children: [
@@ -18,6 +19,7 @@ const routes: Routes = [{
             {path: '', redirectTo: 'new', pathMatch: 'full'},
             {path: 'new', component: NewProductComponent},
             {path: 'all', component: AllProductComponent},
+            {path: 'view', component: ViewProductComponent},
           ]
         },
       ]

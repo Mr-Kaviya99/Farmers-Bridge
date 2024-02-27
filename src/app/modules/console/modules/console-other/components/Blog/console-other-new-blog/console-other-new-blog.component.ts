@@ -1,5 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from "@angular/forms";
+import {ImageService} from "../../../../../../share/services/image/image.service";
+import {LoadingService} from "../../../../../../share/services/loading/loading.service";
+import {SnackBarService} from "../../../../../../share/services/snack-bar/snack-bar.service";
+import {CookieManagerService} from "../../../../../../share/services/cookie/cookie-manager.service";
+import {BlogService} from "../../../../../../share/services/blog/blog.service";
+import {QuillEditorComponent} from "ngx-quill";
 
 @Component({
   selector: 'app-console-other-new-blog',
@@ -7,6 +13,7 @@ import {FormControl, FormGroup, FormGroupDirective, Validators} from "@angular/f
   styleUrls: ['./console-other-new-blog.component.scss']
 })
 export class ConsoleOtherNewBlogComponent {
+  @ViewChild(QuillEditorComponent, {static: false}) quillEditor?: QuillEditorComponent;
 
   image: File | undefined;
   imageUrl = '';
@@ -14,7 +21,6 @@ export class ConsoleOtherNewBlogComponent {
   blog: string = '';
   blured = false;
   focused = false;
-
   quillConfiguration = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -39,10 +45,19 @@ export class ConsoleOtherNewBlogComponent {
       ['link', 'image', 'video']                         // link and image, video
     ],
   }
-
   form = new FormGroup({
+    blogTitle: new FormControl(null, [Validators.required]),
     blogName: new FormControl(null, [Validators.required]),
   });
+
+  constructor(
+    private imageService: ImageService,
+    private blogService: BlogService,
+    private loadingService: LoadingService,
+    private snackBarService: SnackBarService,
+    private cookieManager: CookieManagerService,
+  ) {
+  }
 
   onSelectionChanged = (event: any) => {
     console.log(event)
@@ -67,8 +82,66 @@ export class ConsoleOtherNewBlogComponent {
     console.log(this.blog);
   }
 
-  createProduct(f: FormGroupDirective) {
-    console.log(this.blog)
+  createBlog(f: FormGroupDirective) {
+    if (!this.image) {
+      console.log(this.image)
+      this.snackBarService.openWarningSnackBar('Please select Background Image', 'Close');
+      return;
+    }
+
+    this.loadingService.mainLoader.next(true);
+    this.imageService.saveFile(this.image, 'Farmers-Bridge-Resources/blog-Images').then(imageUrl => {
+      const userData = JSON.parse(this.cookieManager.getPersonalData());
+      console.log(userData.property_id)
+      const data = {
+        title: this.form.get('blogTitle')?.value!,
+        image: imageUrl,
+        content: this.blog,
+        date: new Date()
+      }
+
+      this.blogService.saveBlog(data).subscribe(response => {
+        console.log(response);
+        if (response.code === 201) {
+          this.snackBarService.openSuccessSnackBar('Success!', 'Close');
+          this.refreshForm(f);
+        }
+      });
+    }).catch(error => {
+      this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
+      this.loadingService.mainLoader.next(false);
+    })
+  }
+
+  // @ts-ignore
+  imageSelected(event) {
+    this.image = event.target.files[0];
+    console.log(this.image)
+    if (this.image!.size > 5.5e+6) {
+      // this.snackBarService.openErrorSnackBar('Image Size should not be greater than 5MB', 'Close');
+      return false;
+    }
+    if (
+      this.image!.type !== 'image/jpg' && this.image!.type !== 'image/jpeg' && this.image!.type !== "image/png"
+    ) {
+      // this.snackBarService.openErrorSnackBar('Image type must be (jpg,png or jpeg)', 'Close');
+      return false;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.image!);
+    reader.onload = () => {
+      this.imageUrl = reader.result as string;
+      console.log(this.imageUrl)
+    };
+  }
+
+  private refreshForm(form: FormGroupDirective) {
+    form.resetForm();
+    form.reset();
+    this.image = undefined;
+    this.imageUrl = '';
+    // @ts-ignore
+    this.quillEditor.quillEditor?.setContents([{insert: '\n'}]);
   }
 
 }
