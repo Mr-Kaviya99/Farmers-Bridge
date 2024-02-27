@@ -26,7 +26,7 @@ export class AllProductComponent implements OnInit {
 
   productList: any;
   selectedPropertyId: any;
-
+  role:any;
   productType: string = 'ALL';
 
   page: number | undefined = 0;
@@ -64,12 +64,26 @@ export class AllProductComponent implements OnInit {
   }
 
   loadAllProduct() {
-    this.productService.getAllProducts(this.page, this.pageSize, this.productType)
-      .subscribe((response: any) => {
-          this.dataCount = response.data.count;
-          this.productList = response.data.dataList;
-        }
-      )
+    const userData = JSON.parse(this.cookieManager.getPersonalData());
+
+    this.role = userData.role[0];
+
+    if (userData.role[0] === 'ADMIN') {
+      this.productService.getAllProducts(this.page, this.pageSize, this.productType)
+        .subscribe((response: any) => {
+            this.dataCount = response.data.count;
+            this.productList = response.data.dataList;
+          }
+        )
+    }else if(userData.role[0] === 'FARMER'){
+      this.productService.getAllProductsByUserId(this.page, this.pageSize, userData?.property_id)
+        .subscribe((response: any) => {
+            this.dataCount = response.data.count;
+            this.productList = response.data.dataList;
+          }
+        )
+    }
+
   }
 
   public getServerData(event?: PageEvent): any {

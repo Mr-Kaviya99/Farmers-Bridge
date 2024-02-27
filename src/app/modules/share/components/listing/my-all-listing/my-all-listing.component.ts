@@ -58,9 +58,9 @@ export class MyAllListingComponent {
 
   loadAllListings() {
     const userData = JSON.parse(this.cookieManager.getPersonalData());
-    // this.listingService.getAllListingsByUserId(this.page, this.pageSize, userData?.property_id)
-    this.listingService.getAllListings(this.page, this.pageSize,this.role)
+    this.listingService.getAllListingsByUserId(this.page, this.pageSize, userData?.property_id)
       .subscribe((response: any) => {
+        console.log(response)
           this.dataCount = response.data.count;
           this.allListings = response.data.dataList;
         }

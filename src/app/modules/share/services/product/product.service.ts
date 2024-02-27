@@ -33,4 +33,9 @@ export class ProductService {
   productById(productId: any): Observable<any> {
     return this.http.get(this.baseUrl + 'products/get-by-id/' + productId);
   }
+
+  getAllProductsByUserId(page: number | undefined, pageSize: number | undefined, userId: any) {
+    return this.http.get<any>(this.baseUrl + 'products/get-all-by-user/'+userId+'?page=' + page + '&size=' + pageSize);
+
+  }
 }
