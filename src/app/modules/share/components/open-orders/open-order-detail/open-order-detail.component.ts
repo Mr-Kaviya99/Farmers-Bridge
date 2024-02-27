@@ -69,10 +69,7 @@ export class OpenOrderDetailComponent {
   }
 
   makeABid(f: FormGroupDirective) {
-    let data = {
-      bidPrice: this.form.get('bidAmount')?.value!
-    }
-    this.bidDetailService.saveBid(this.userData.property_id, this.listingId, data).subscribe(response => {
+    this.bidDetailService.saveBid(this.userData.property_id, this.listingId, this.form.get('bidAmount')?.value!).subscribe(response => {
       console.log(response);
       if (response.code === 201) {
         this.snackBarService.openSuccessSnackBar('Success!', 'Close');

@@ -10,6 +10,7 @@ import {DeleteInfo} from "../../../services/dto/delete-info/delete-info";
 import {EffectInfo} from "../../../services/dto/delete-info/effect-info";
 import {DeleteInfoComponent} from "../../../widgets/pop-up/delete-info/delete-info.component";
 import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
+import {BidDetailsComponent} from "../bid-details/bid-details.component";
 
 @Component({
   selector: 'app-my-all-listing',
@@ -60,7 +61,7 @@ export class MyAllListingComponent {
     const userData = JSON.parse(this.cookieManager.getPersonalData());
     this.listingService.getAllListingsByUserId(this.page, this.pageSize, userData?.property_id)
       .subscribe((response: any) => {
-        console.log(response)
+          console.log(response)
           this.dataCount = response.data.count;
           this.allListings = response.data.dataList;
         }
@@ -100,6 +101,14 @@ export class MyAllListingComponent {
           }
         });
       }
+    });
+  }
+
+  ViewBidDetails(listingId: any) {
+    const dialogRef = this.dialog.open(BidDetailsComponent, {
+      data: listingId,
+      width:'500px',
+      minHeight:'200px'
     });
   }
 }

@@ -34,6 +34,7 @@ import {DeleteInfoComponent} from "./widgets/pop-up/delete-info/delete-info.comp
 import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 import { ViewProductComponent } from './components/product/view-product/view-product.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { BidDetailsComponent } from './components/listing/bid-details/bid-details.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     ChangeStatusComponent,
     DeleteInfoComponent,
     EditProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    BidDetailsComponent,
   ],
   exports: [
     MainLoadingComponent

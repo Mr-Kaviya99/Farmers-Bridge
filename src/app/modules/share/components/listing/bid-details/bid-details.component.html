@@ -1,0 +1,29 @@
+<div class="bid-details-outer">
+  <h2 class="topic">Bid Details</h2>
+  <div class="table-outer">
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Bid Detail Id</td>
+        <td>Bid Price</td>
+        <!--        <td>Image</td>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let abl of allBidDetails">
+        <td class="table-col">
+          <div class="td-inner">
+            {{abl?.bidDetailId}}
+          </div>
+        </td>
+        <td class="table-col">
+          <div class="td-inner">
+            {{abl?.bidPrice}}
+          </div>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
