@@ -35,6 +35,7 @@ import { EditProductComponent } from './components/product/edit-product/edit-pro
 import { ViewProductComponent } from './components/product/view-product/view-product.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { BidDetailsComponent } from './components/listing/bid-details/bid-details.component';
+import { CheckoutPaymentComponent } from './components/payment/checkout-payment/checkout-payment.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { BidDetailsComponent } from './components/listing/bid-details/bid-detail
     EditProductComponent,
     ViewProductComponent,
     BidDetailsComponent,
+    CheckoutPaymentComponent,
   ],
   exports: [
     MainLoadingComponent

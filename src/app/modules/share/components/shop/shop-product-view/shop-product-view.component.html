@@ -14,7 +14,7 @@
       <p class="other-data">Price Per Kg :- <span>Rs. {{productDetails?.price}}</span></p>
 
       <div class="button-outer">
-        <button mat-raised-button class="place-bid">Buy Now</button>
+        <button mat-raised-button class="place-bid" (click)="checkout(productDetails)">Buy Now</button>
 <!--        <button mat-flat-button>Add to Cart</button>-->
       </div>
     </div>

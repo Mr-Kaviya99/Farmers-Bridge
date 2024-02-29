@@ -5,6 +5,9 @@ import {SnackBarService} from "../../../services/snack-bar/snack-bar.service";
 import {BidDetailService} from "../../../services/bid-details/bid-detail.service";
 import {CookieManagerService} from "../../../services/cookie/cookie-manager.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {BidDetailsComponent} from "../../listing/bid-details/bid-details.component";
+import {MatDialog} from "@angular/material/dialog";
+import {CheckoutPaymentComponent} from "../../payment/checkout-payment/checkout-payment.component";
 
 @Component({
   selector: 'app-shop-product-view',
@@ -29,6 +32,7 @@ export class ShopProductViewComponent {
     private cookieManager: CookieManagerService,
     private route: ActivatedRoute,
     private router: Router,
+    public dialog: MatDialog
   ) {
   }
 
@@ -50,5 +54,11 @@ export class ShopProductViewComponent {
     }, error => {
       this.snackBarService.openErrorSnackBar('Something went wrong!', 'Close');
     })
+  }
+
+  checkout(productDetails: any) {
+    const dialogRef = this.dialog.open(CheckoutPaymentComponent, {
+      data: productDetails,
+    });
   }
 }
